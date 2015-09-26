@@ -42,6 +42,29 @@ namespace CUITFramework.Products
 
             return page;
         }
-        
-   }
+
+        public T InitializePage<T>(BasePage pageroot) where T : BasePage, new()
+        {
+            if (pageroot.CurrentBrowser == null)
+            {
+                throw new InvalidOperationException("CurrentBrowser is null. Use Launch to initialize browser.");
+            }
+            T page = new T();
+            page.CurrentBrowser = pageroot.CurrentBrowser;
+            return page;
+        }
+        public T NavigateTo<T>(BasePage pageroot) where T : BasePage, new()
+        {
+            if (pageroot.CurrentBrowser == null)
+            {
+                throw new InvalidOperationException("CurrentBrowser is null. Use Launch to initialize browser.");
+            }
+            T page = new T();
+            var url = page.ConstructUrl();
+            pageroot.CurrentBrowser.NavigateToUrl(url);
+            pageroot.CurrentBrowser.WaitForControlReady();
+            page.CurrentBrowser = pageroot.CurrentBrowser;
+            return page;
+        }
+    }
 }

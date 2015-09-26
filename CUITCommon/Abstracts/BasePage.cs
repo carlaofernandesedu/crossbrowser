@@ -37,23 +37,6 @@ namespace CUITCommon.Abstracts
             this.ConstructUrl();
         }
 
-        
-        /// <summary>
-        /// Initialize page from current browser window.
-        /// </summary>
-        /// <typeparam name="T">Type of the page.</typeparam>
-        /// <returns>Created page object.</returns>
-        public T InitializePage<T>() where T : BasePage, new()
-        {
-            if (this.CurrentBrowser == null)
-            {
-                throw new InvalidOperationException("CurrentBrowser is null. Use Launch to initialize browser.");
-            }
-
-            T page = new T();
-            page.CurrentBrowser = this.CurrentBrowser;
-            return page;
-        }
         /// <summary>
         /// Builds derived page URL based on the BaseURL and specyfic page URL.
         /// </summary>
@@ -69,19 +52,5 @@ namespace CUITCommon.Abstracts
         /// </summary>
         /// <typeparam name="T">Type of the page.</typeparam>
         /// <returns>Created page object.</returns>
-        public T NavigateTo<T>() where T : BasePage, new()
-        {
-            if (this.CurrentBrowser == null)
-            {
-                throw new InvalidOperationException("BrowserWindow is null. Use Lunch to initialize browser.");
-            }
-
-            T page = new T();
-            var url = page.ConstructUrl();
-            this.CurrentBrowser.NavigateToUrl(url);
-            this.CurrentBrowser.WaitForControlReady();
-            page.CurrentBrowser = this.CurrentBrowser;
-            return page;
-        }
-    }
+     }
 }

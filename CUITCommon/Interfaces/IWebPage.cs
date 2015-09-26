@@ -19,5 +19,9 @@ namespace CUITCommon.Interfaces
             bool clearCookies = true,
             bool maximized = true)
             where T : BasePage, new();
+
+        T InitializePage<T>(BasePage pageroot) where T : BasePage, new();
+
+        T NavigateTo<T>(BasePage pageroot) where T : BasePage, new();
     }
 }
