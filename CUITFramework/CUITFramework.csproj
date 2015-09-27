@@ -48,11 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Factories\GenericoWebFactory.cs" />
+    <Compile Include="Factories\FactoryObjects.cs" />
+    <Compile Include="Factories\GenericWebFactory.cs" />
     <Compile Include="Factories\SeleniumWebFactory.cs" />
     <Compile Include="Factories\WebFactory.cs" />
-    <Compile Include="Products\GenericoPage.cs" />
-    <Compile Include="Products\GenericoWebBrowser.cs" />
+    <Compile Include="Products\GenericPage.cs" />
+    <Compile Include="Products\GenericWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Products\SearchSelector.cs" />
     <Compile Include="Products\UIControllExtensions.cs" />

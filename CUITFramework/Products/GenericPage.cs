@@ -8,7 +8,7 @@ using CUITCommon.Interfaces;
 
 namespace CUITFramework.Products
 {
-    public class GenericoPage : IWebPage
+    public class GenericPage : IWebPage
     {
 
         public T Launch<T>(

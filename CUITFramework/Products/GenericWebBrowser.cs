@@ -5,14 +5,19 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITFramework.Products
 {
-    public class GenericoWebBrowser : WebBrowser
+    public class GenericWebBrowser : WebBrowser
     {
 
         private BrowserWindow window;
 
         private string pathbrowser;
 
-        public GenericoWebBrowser(string nome = "ie",string filename = "")
+        public GenericWebBrowser() : this("ie","")
+        {
+           
+        }
+        
+        public GenericWebBrowser(string nome,string filename)
         {
             pathbrowser = filename;
             BrowserWindow.CurrentBrowser = nome;

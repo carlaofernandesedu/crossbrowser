@@ -10,7 +10,11 @@ namespace CUITFramework.Factories
 {
     public class SeleniumWebFactory
     {
-        public WebBrowser createBrowser(string browser)
+        public WebBrowser getObjectPages(string browser)
+        {
+            throw new NotImplementedException();
+        }
+        public WebBrowser getObjectPages()
         {
             throw new NotImplementedException();
         }
