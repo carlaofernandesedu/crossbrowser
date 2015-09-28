@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CUITCommon.Abstracts;
 using CUITCommon.Interfaces;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CodedUITestCrossbrowser.Pages
 {
@@ -13,7 +14,7 @@ namespace CodedUITestCrossbrowser.Pages
 
         public override string Title
         {
-            get { return ""; }
+            get { return "Secretaria de Estado da Educação"; }
         }
 
         public override Uri ConstructUrl()
@@ -23,6 +24,7 @@ namespace CodedUITestCrossbrowser.Pages
 
         public override bool IsValidPageDisplayed()
         {
+            var objeto = this.CurrentBrowser.FindElementsById<HtmlEdit>("ctl00_ContentPlaceHolder1_txtUsuario");
             return true;
         }
     }

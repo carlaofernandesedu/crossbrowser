@@ -49,9 +49,9 @@ namespace CodedUITestCrossbrowser
         [TestInitialize()]
         public void MyTestInitialize()
         {        
-            _driverBrowser = FactoryObjects<GenericWebFactory>.FactoryBrowser("chrome");
+            _driverBrowser = FactoryObjects<GenericWebFactory>.FactoryBrowser("ie");
             _pages = FactoryObjects<GenericWebFactory>.FactoryPage();
-            _pages.SetBaseURl("http://localhost/");
+            _pages.SetBaseURl("http://10.200.240.19/portalnet");
             
         }
 

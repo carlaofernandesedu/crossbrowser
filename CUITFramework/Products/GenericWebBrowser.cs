@@ -68,14 +68,31 @@ namespace CUITFramework.Products
 
         public override T FindElementsById<T>(string id) 
         {
-           var body = (window.CurrentDocumentWindow.GetChildren()[0] as UITestControl);
-           return body.FindById<T>(id);
+           T retorno = null; 
+           foreach(var item in window.CurrentDocumentWindow.GetChildren())
+           {
+              retorno = item.FindById<T>(id);
+              if (retorno!=null)
+              {
+                  break;
+              }
+           }
+           return retorno;
         }
 
         public override T FindFirstByCssClass<T>(string id) 
         {
-            var body = (window.CurrentDocumentWindow.GetChildren()[0] as UITestControl);
-            return body.FindFirstByCssClass<T>(id);
+            T retorno = null;
+            foreach (var item in window.CurrentDocumentWindow.GetChildren())
+            {
+                retorno = item.FindFirstByCssClass<T>(id);
+                if (retorno != null)
+                {
+                    break;
+                }
+            }
+            return retorno;
+            
         }
 
         
