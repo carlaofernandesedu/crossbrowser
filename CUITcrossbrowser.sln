@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITCommon", "CUITCommon\CUITCommon.csproj", "{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITFramework", "CUITFramework\CUITFramework.csproj", "{6926E668-F306-4EA5-B63C-28DF4CBB42CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodedUITestCrossbrowser", "CodedUITestCrossbrowser\CodedUITestCrossbrowser.csproj", "{094E85FC-E400-44F4-9E85-52F34D3F66B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6926E668-F306-4EA5-B63C-28DF4CBB42CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6926E668-F306-4EA5-B63C-28DF4CBB42CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6926E668-F306-4EA5-B63C-28DF4CBB42CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6926E668-F306-4EA5-B63C-28DF4CBB42CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{094E85FC-E400-44F4-9E85-52F34D3F66B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{094E85FC-E400-44F4-9E85-52F34D3F66B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{094E85FC-E400-44F4-9E85-52F34D3F66B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{094E85FC-E400-44F4-9E85-52F34D3F66B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

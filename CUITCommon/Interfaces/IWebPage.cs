@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CUITCommon.Abstracts;
+﻿using CUITCommon.Abstracts;
 
 namespace CUITCommon.Interfaces
 {
@@ -23,5 +18,7 @@ namespace CUITCommon.Interfaces
         T InitializePage<T>(BasePage pageroot) where T : BasePage, new();
 
         T NavigateTo<T>(BasePage pageroot) where T : BasePage, new();
+
+        void SetBaseURl(string baseURL); 
     }
 }

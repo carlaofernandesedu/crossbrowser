@@ -1,29 +1,16 @@
-﻿
+﻿using System;
+
 namespace CUITCommon.Abstracts
 {
-    using Microsoft.VisualStudio.TestTools.UITesting;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.VisualStudio.TestTools.UITest.Extension;
-    using System.Diagnostics;
-    using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-   
-     
+
     public abstract class BasePage
     {
-        protected const string BaseURL = "https://www.facebook.com/";
+        public string BaseURL = "http://localhost/";
+        public abstract string Title{get;}
 
         /// <summary>
         /// Gets URL address of the current page.
         /// </summary>
-        public Uri PageUrl
-        {
-            get;
-            protected set;
-        }
         /// <summary>
         /// Current broser window.
         /// </summary>
@@ -34,6 +21,12 @@ namespace CUITCommon.Abstracts
         /// </summary>
         public BasePage()
         {
+            this.ConstructUrl();
+        }
+
+        public BasePage(string baseurl)
+        {
+            this.BaseURL = baseurl;
             this.ConstructUrl();
         }
 
@@ -52,5 +45,9 @@ namespace CUITCommon.Abstracts
         /// </summary>
         /// <typeparam name="T">Type of the page.</typeparam>
         /// <returns>Created page object.</returns>
+        public bool IsAt()
+        {
+            return this.CurrentBrowser.Title().Contains(Title);
+        }
      }
 }

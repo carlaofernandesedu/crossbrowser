@@ -9,22 +9,22 @@ using CUITCommon.Interfaces;
 
 namespace CUITFramework.Factories
 {
-    public class GenericWebFactory : WebFactory 
+    public class GenericWebFactory : IWebFactory 
     {
-        public override  WebBrowser getObjectBrowser(string browser)
+        public WebBrowser getObjectBrowser(string browser)
         {
             var path = GetBrowserExePath(browser);
             return new GenericWebBrowser(browser,path);
         }
 
-        public override IWebPage getObjectPages()
+        public IWebPage getObjectPages()
         {
              return  new GenericPage();
         }
 
         private static string GetBrowserExePath(string browser)
         {
-            var path = string.Empty;
+            var path = browser;
             //var settings = Properties.Settings.Default;
 
             //switch (browser)

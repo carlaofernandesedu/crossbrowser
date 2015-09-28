@@ -25,8 +25,8 @@ namespace CUITFramework.Products
         
         public override string Title()
         {
-            
-            throw new NotImplementedException();
+
+            return window.Title;
         }
 
 

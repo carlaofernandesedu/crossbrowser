@@ -10,7 +10,8 @@ namespace CUITFramework.Products
 {
     public class GenericPage : IWebPage
     {
-
+        private string _baseURL = String.Empty;
+       
         public T Launch<T>(
             WebBrowser browser,
             bool clearCookies = true,
@@ -18,9 +19,8 @@ namespace CUITFramework.Products
             where T : BasePage, new()
         {
             T page = new T();
-
-            var url = page.PageUrl;
-            if (url == null)
+            page.BaseURL = this._baseURL;
+            if (page.ConstructUrl() == null)
             {
                 throw new InvalidOperationException("Unable to find URL for requested page.");
             }
@@ -65,6 +65,12 @@ namespace CUITFramework.Products
             pageroot.CurrentBrowser.WaitForControlReady();
             page.CurrentBrowser = pageroot.CurrentBrowser;
             return page;
+        }
+
+
+        public void SetBaseURl(string baseURL)
+        {
+            _baseURL = baseURL;
         }
     }
 }

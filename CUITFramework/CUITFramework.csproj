@@ -51,7 +51,6 @@
     <Compile Include="Factories\FactoryObjects.cs" />
     <Compile Include="Factories\GenericWebFactory.cs" />
     <Compile Include="Factories\SeleniumWebFactory.cs" />
-    <Compile Include="Factories\WebFactory.cs" />
     <Compile Include="Products\GenericPage.cs" />
     <Compile Include="Products\GenericWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
