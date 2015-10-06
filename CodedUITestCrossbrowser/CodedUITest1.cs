@@ -13,6 +13,7 @@ using CUITCommon.Interfaces;
 using CUITFramework.Factories;
 using CUITFramework.Products;
 using CodedUITestCrossbrowser.Pages;
+using CUITSeleniumProduct;
 
 
 
@@ -49,8 +50,8 @@ namespace CodedUITestCrossbrowser
         [TestInitialize()]
         public void MyTestInitialize()
         {        
-            _driverBrowser = FactoryObjects<GenericWebFactory>.FactoryBrowser("ie");
-            _pages = FactoryObjects<GenericWebFactory>.FactoryPage();
+            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("ie");
+            _pages = FactoryObjects<SeleniumWebFactory>.FactoryPage();
             _pages.SetBaseURl("http://10.200.240.19/portalnet");
             
         }

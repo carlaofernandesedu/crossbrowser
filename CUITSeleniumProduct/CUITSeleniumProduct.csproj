@@ -47,9 +47,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SeleniumPage.cs" />
     <Compile Include="SeleniumWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeleniumWebElement.cs" />
+    <Compile Include="SeleniumWebFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITCommon\CUITCommon.csproj">

@@ -64,6 +64,10 @@
       <Project>{6926e668-f306-4ea5-b63c-28df4cbb42cf}</Project>
       <Name>CUITFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CUITSeleniumProduct\CUITSeleniumProduct.csproj">
+      <Project>{24b0fcaf-5082-4a4c-bfb3-24a7a19adf96}</Project>
+      <Name>CUITSeleniumProduct</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -23,11 +23,11 @@ namespace CUITSeleniumProduct
 
         private string pathbrowser;
 
-        public SeleniumWebBrowser() : this("ie","")
+        public SeleniumWebBrowser() : this("ie")
         {
         }
 
-        public SeleniumWebBrowser(string nome, string filename)
+        public SeleniumWebBrowser(string nome)
         {
             switch (nome.ToLower())
             {
