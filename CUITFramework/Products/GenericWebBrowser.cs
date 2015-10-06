@@ -95,6 +95,22 @@ namespace CUITFramework.Products
             
         }
 
+
+        
+        public override dynamic FindElementsById(dynamic objeto, string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override dynamic FindFirstByCssClass(dynamic objeto, string cssclass)
+        {
+           throw new NotImplementedException();
+        }
+
+        public override dynamic FindFirstByName(dynamic objeto, string name)
+        {
+          throw new NotImplementedException();
+        }
         
             
     }

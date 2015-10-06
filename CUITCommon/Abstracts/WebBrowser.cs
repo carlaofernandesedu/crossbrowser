@@ -23,6 +23,14 @@ namespace CUITCommon.Abstracts
 
         public abstract T FindFirstByCssClass<T>(string id) where T : HtmlControl, new();
 
+        public abstract dynamic FindElementsById(dynamic objeto, string id);
+
+        public abstract dynamic FindFirstByCssClass(dynamic objeto, string cssclass);
+
+        public abstract dynamic FindFirstByName(dynamic objeto, string name);
+
+        public WebElement Elements;
+
 
     }
 }
