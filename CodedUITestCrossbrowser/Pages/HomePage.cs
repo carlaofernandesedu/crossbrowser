@@ -24,7 +24,7 @@ namespace CodedUITestCrossbrowser.Pages
 
         public override bool IsValidPageDisplayed()
         {
-            var objeto = this.CurrentBrowser.FindElementsById<HtmlEdit>("ctl00_ContentPlaceHolder1_txtUsuario");
+            var objeto = this.CurrentBrowser.FindElementsById(null,"ctl00_ContentPlaceHolder1_txtUsuario");
             return true;
         }
     }

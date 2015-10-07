@@ -23,22 +23,29 @@ namespace CUITSeleniumProduct
 
         private string pathbrowser;
 
-        public SeleniumWebBrowser() : this("ie")
+        public SeleniumWebBrowser() : this("firefox","")
         {
         }
 
-        public SeleniumWebBrowser(string nome)
+        public SeleniumWebBrowser(string nome, string pathbrowser)
         {
+            string URL = @"http://10.200.240.19/portalnet";
+
             switch (nome.ToLower())
             {
-                case "chrome" : 
-                  window = new ChromeDriver();
+                case "chrome" :
+                    window = new ChromeDriver(pathbrowser);
                   break;
                 case "firefox":
                   window = new FirefoxDriver();
                   break;
                 case "ie":
-                  window = new InternetExplorerDriver();
+                  var options = new InternetExplorerOptions()
+                  {
+                      InitialBrowserUrl = URL,
+                      IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                  };
+                  window = new InternetExplorerDriver(pathbrowser,options);
                   break;
             }
         }
