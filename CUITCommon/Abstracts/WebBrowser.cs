@@ -19,15 +19,14 @@ namespace CUITCommon.Abstracts
         public abstract void ClearCookies();
         public abstract void Maximized(bool isOk = true);
 
-        public abstract T FindElementsById<T>(string id) where T : HtmlControl, new();
 
-        public abstract T FindFirstByCssClass<T>(string id) where T : HtmlControl, new();
+        public abstract dynamic FindFirstById(string typeObject, string id);
 
-        public abstract dynamic FindElementsById(dynamic objeto, string id);
+        public abstract dynamic FindFirstByCssClass(string typeObject, string cssclass);
 
-        public abstract dynamic FindFirstByCssClass(dynamic objeto, string cssclass);
+        public abstract dynamic FindFirstByName(string typeObject, string name);
 
-        public abstract dynamic FindFirstByName(dynamic objeto, string name);
+        public abstract void SendKeys(dynamic control, string value);
 
         public WebElement Elements;
 

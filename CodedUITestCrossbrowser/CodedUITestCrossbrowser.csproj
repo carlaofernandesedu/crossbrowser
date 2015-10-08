@@ -64,6 +64,10 @@
       <Project>{6926e668-f306-4ea5-b63c-28df4cbb42cf}</Project>
       <Name>CUITFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CUITGenericProduct\CUITGenericProduct.csproj">
+      <Project>{112d9f22-124a-4bc4-9d52-7c2d9da715a3}</Project>
+      <Name>CUITGenericProduct</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CUITSeleniumProduct\CUITSeleniumProduct.csproj">
       <Project>{24b0fcaf-5082-4a4c-bfb3-24a7a19adf96}</Project>
       <Name>CUITSeleniumProduct</Name>

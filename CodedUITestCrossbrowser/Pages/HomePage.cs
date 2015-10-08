@@ -22,9 +22,15 @@ namespace CodedUITestCrossbrowser.Pages
             return new Uri(BaseURL);
         }
 
+        #region "Controles"
+        public dynamic Usuario;
+        public dynamic Password;
+        #endregion
+
         public override bool IsValidPageDisplayed()
         {
-            var objeto = this.CurrentBrowser.FindElementsById(null,"ctl00_ContentPlaceHolder1_txtUsuario");
+            Usuario = this.CurrentBrowser.FindFirstById("HtmlEdit", "ctl00_ContentPlaceHolder1_txtUsuario");
+            Password = this.CurrentBrowser.FindFirstById("HtmlEdit", "ctl00_ContentPlaceHolder1_txtSenha");
             return true;
         }
     }

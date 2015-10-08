@@ -2,6 +2,7 @@
 using CUITCommon.Abstracts;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 
 namespace CUITGenericProduct
 {
@@ -66,21 +67,50 @@ namespace CUITGenericProduct
             BrowserWindow.ClearCookies();
         }
 
-        public override T FindElementsById<T>(string id) 
+        public override dynamic FindFirstById(string typeObject, string id)
         {
-           T retorno = null; 
-           foreach(var item in window.CurrentDocumentWindow.GetChildren())
-           {
-              retorno = item.FindById<T>(id);
-              if (retorno!=null)
-              {
-                  break;
-              }
-           }
-           return retorno;
+            return FindControl(typeObject, "FindById", id);
         }
 
-        public override T FindFirstByCssClass<T>(string id) 
+        public override dynamic FindFirstByCssClass(string typeObject, string cssclass)
+        {
+            return FindControl(typeObject, "FindByCssClass", cssclass);
+        }
+
+        private dynamic FindControl(string typeObject,  string methodName,string value)
+        {
+            Type tipo = Type.GetType("Microsoft.VisualStudio.TestTools.UITesting.HtmlControls." + typeObject + ",Microsoft.VisualStudio.TestTools.UITesting,version=12.0.0.0");
+            var typeOfContext = typeof(GenericWebBrowser);
+            var method = typeOfContext.GetMethod(methodName);
+            var genericMethod = method.MakeGenericMethod(new Type[] { tipo }); //generic metodo
+            return genericMethod.Invoke(this, new object[] { value }); //objetos 
+        }
+
+        public override dynamic FindFirstByName(string typeObject, string name)
+        {
+          throw new NotImplementedException();
+        }
+
+        public override void SendKeys(dynamic control, string value)
+        {
+            Keyboard.SendKeys(control, value);
+        }
+
+        public T FindById<T>(string id) where T : HtmlControl, new()
+        {
+            T retorno = null;
+            foreach (var item in window.CurrentDocumentWindow.GetChildren())
+            {
+                retorno = item.FindById<T>(id);
+                if (retorno != null)
+                {
+                    break;
+                }
+            }
+            return retorno;
+        }
+
+        public T FindByCssClass<T>(string id) where T : HtmlControl, new()
         {
             T retorno = null;
             foreach (var item in window.CurrentDocumentWindow.GetChildren())
@@ -92,26 +122,8 @@ namespace CUITGenericProduct
                 }
             }
             return retorno;
-            
-        }
 
-
-        
-        public override dynamic FindElementsById(dynamic objeto, string id)
-        {
-            throw new NotImplementedException();
         }
-
-        public override dynamic FindFirstByCssClass(dynamic objeto, string cssclass)
-        {
-           throw new NotImplementedException();
-        }
-
-        public override dynamic FindFirstByName(dynamic objeto, string name)
-        {
-          throw new NotImplementedException();
-        }
-        
             
     }
 }
