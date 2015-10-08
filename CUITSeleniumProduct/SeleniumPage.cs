@@ -25,7 +25,6 @@ namespace CUITSeleniumProduct
                 throw new InvalidOperationException("Unable to find URL for requested page.");
             }
             var window = browser.Launch(page.ConstructUrl());
-            window.Launch(page.ConstructUrl());
             page.CurrentBrowser = window;
 
             if (clearCookies)

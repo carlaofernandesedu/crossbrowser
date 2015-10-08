@@ -23,31 +23,21 @@ namespace CUITSeleniumProduct
 
         private string pathbrowser;
 
-        public SeleniumWebBrowser() : this("firefox","")
+        private string browserName;
+
+        public SeleniumWebBrowser() : this("firefox","","")
         {
         }
 
-        public SeleniumWebBrowser(string nome, string pathbrowser)
+        public SeleniumWebBrowser(string name, string _pathBrowser, string homeurl)
         {
-            string URL = @"http://localhost/";
-
-            switch (nome.ToLower())
+            browserName = name;
+            pathbrowser = _pathBrowser;
+            if (!String.IsNullOrEmpty(homeurl))
             {
-                case "chrome" :
-                    window = new ChromeDriver(pathbrowser);
-                  break;
-                case "firefox":
-                  window = new FirefoxDriver();
-                  break;
-                case "ie":
-                  var options = new InternetExplorerOptions()
-                  {
-                      InitialBrowserUrl = URL,
-                      IntroduceInstabilityByIgnoringProtectedModeSettings = true
-                  };
-                  window = new InternetExplorerDriver(pathbrowser,options);
-                  break;
+                this.Launch(new Uri(homeurl));
             }
+            
         }
         
         public override string Title()
@@ -73,7 +63,26 @@ namespace CUITSeleniumProduct
 
         public override WebBrowser Launch(Uri url)
         {
-            window.Url = url.AbsoluteUri;
+
+            switch (browserName.ToLower())
+            {
+                case "chrome":
+                    window = new ChromeDriver(pathbrowser);
+                    break;
+                case "firefox":
+                    window = new FirefoxDriver();
+                    break;
+                case "ie":
+                    
+                    var options = new InternetExplorerOptions()
+                    {
+                        InitialBrowserUrl = url.AbsoluteUri,
+                        IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                    };
+                    window = new InternetExplorerDriver(pathbrowser, options);
+                    break;
+            }
+            this.window.Url = url.AbsoluteUri;
             return this;
         }
 

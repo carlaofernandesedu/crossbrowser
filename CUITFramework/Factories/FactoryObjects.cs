@@ -10,6 +10,13 @@ namespace CUITFramework.Factories
             IWebFactory fabrica = new T();
             return fabrica.getObjectBrowser(browser);
         }
+
+        public static WebBrowser FactoryBrowser(string browser, string homeurl)
+        {
+            IWebFactory fabrica = new T();
+            return fabrica.getObjectBrowser(browser,homeurl);
+        }
+
         public static IWebPage FactoryPage()
         {
             IWebFactory fabrica = new T();

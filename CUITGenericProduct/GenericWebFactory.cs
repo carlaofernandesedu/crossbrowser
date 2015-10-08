@@ -13,7 +13,13 @@ namespace CUITGenericProduct
         public WebBrowser getObjectBrowser(string browser)
         {
             var path = GetBrowserExePath(browser);
-            return new GenericWebBrowser(browser,path);
+            return new GenericWebBrowser(browser,path,string.Empty);
+        }
+
+        public WebBrowser getObjectBrowser(string browser, string homeurl)
+        {
+            var path = GetBrowserExePath(browser);
+            return new GenericWebBrowser(browser, path, homeurl);
         }
 
         public IWebPage getObjectPages()

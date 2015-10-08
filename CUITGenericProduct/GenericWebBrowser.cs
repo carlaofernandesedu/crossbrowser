@@ -10,18 +10,24 @@ namespace CUITGenericProduct
     {
 
         private BrowserWindow window;
+        private string browserName;
 
         private string pathbrowser;
 
-        public GenericWebBrowser() : this("ie","")
+        public GenericWebBrowser() : this("ie","",String.Empty)
         {
            
         }
         
-        public GenericWebBrowser(string nome,string filename)
+        public GenericWebBrowser(string name,string filename,String homeurl)
         {
             pathbrowser = filename;
-            BrowserWindow.CurrentBrowser = nome;
+            browserName = name;
+            if (!String.IsNullOrEmpty(homeurl))
+            {
+                this.Launch(new Uri(homeurl));
+            }
+            
         }
         
         public override string Title()
@@ -43,6 +49,7 @@ namespace CUITGenericProduct
 
         public override WebBrowser Launch(Uri url)
         {
+            BrowserWindow.CurrentBrowser = browserName;
             this.window = BrowserWindow.Launch(url);
             if (window == null)
             {

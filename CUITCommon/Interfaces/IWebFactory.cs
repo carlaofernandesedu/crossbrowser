@@ -5,6 +5,8 @@ namespace CUITCommon.Interfaces
     public interface IWebFactory
     {
         WebBrowser getObjectBrowser(string browser);
+
+        WebBrowser getObjectBrowser(string browser,string homeurl);
         IWebPage getObjectPages();
        
     }

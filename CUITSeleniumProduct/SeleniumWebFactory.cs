@@ -16,7 +16,14 @@ namespace CUITSeleniumProduct
         {
             var path = GetBrowserExePath(browser);
 
-            return new SeleniumWebBrowser(browser,path);
+            return new SeleniumWebBrowser(browser,path, String.Empty);
+        }
+
+        public WebBrowser getObjectBrowser(string browser, string homeurl)
+        {
+            var path = GetBrowserExePath(browser);
+
+            return new SeleniumWebBrowser(browser, path,homeurl);
         }
         public IWebPage getObjectPages()
         {
