@@ -10,11 +10,10 @@ namespace CUITCommon.Abstracts
 
         public abstract void NavigateToUrl(Uri url);
 
-        public abstract void WaitForControlReady();
+        public abstract void WaitForControlReady(int milliseconds);
 
         public abstract WebBrowser Launch(Uri url);
 
-        public abstract HtmlControl Body();
 
         public abstract void ClearCookies();
         public abstract void Maximized(bool isOk = true);

@@ -61,7 +61,7 @@ namespace CUITGenericProduct
             T page = new T();
             var url = page.ConstructUrl();
             pageroot.CurrentBrowser.NavigateToUrl(url);
-            pageroot.CurrentBrowser.WaitForControlReady();
+            pageroot.CurrentBrowser.WaitForControlReady(0);
             page.CurrentBrowser = pageroot.CurrentBrowser;
             return page;
         }

@@ -42,7 +42,7 @@ namespace CUITGenericProduct
             window.NavigateToUrl(url);
         }
 
-        public override void WaitForControlReady()
+        public override void WaitForControlReady(int milliseconds)
         {
             window.WaitForControlReady();
         }
@@ -59,7 +59,7 @@ namespace CUITGenericProduct
             return this;
         }
 
-        public override HtmlControl Body()
+        public HtmlControl Body()
         {
             return (window.CurrentDocumentWindow.GetChildren()[0] as UITestControl) as HtmlControl;
         }
@@ -89,8 +89,8 @@ namespace CUITGenericProduct
             Type tipo = Type.GetType("Microsoft.VisualStudio.TestTools.UITesting.HtmlControls." + typeObject + ",Microsoft.VisualStudio.TestTools.UITesting,version=12.0.0.0");
             var typeOfContext = typeof(GenericWebBrowser);
             var method = typeOfContext.GetMethod(methodName);
-            var genericMethod = method.MakeGenericMethod(new Type[] { tipo }); //generic metodo
-            return genericMethod.Invoke(this, new object[] { value }); //objetos 
+            var genericMethod = method.MakeGenericMethod(new Type[] { tipo }); 
+            return genericMethod.Invoke(this, new object[] { value }); 
         }
 
         public override dynamic FindFirstByName(string typeObject, string name)

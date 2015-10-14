@@ -49,6 +49,7 @@
     <Compile Include="Abstracts\WebElement.cs" />
     <Compile Include="Interfaces\IWebPage.cs" />
     <Compile Include="Interfaces\IWebFactory.cs" />
+    <Compile Include="ParameterProp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

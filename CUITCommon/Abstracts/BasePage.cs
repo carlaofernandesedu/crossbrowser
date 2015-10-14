@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CUITCommon.Abstracts
 {
@@ -7,6 +9,8 @@ namespace CUITCommon.Abstracts
     {
         public string BaseURL = "http://localhost/";
         public abstract string Title{get;}
+
+        public abstract List<ParameterProp> ConfigureParameters();
 
         /// <summary>
         /// Gets URL address of the current page.
@@ -22,12 +26,14 @@ namespace CUITCommon.Abstracts
         public BasePage()
         {
             this.ConstructUrl();
+            this.ConfigureParameters();
         }
 
         public BasePage(string baseurl)
         {
             this.BaseURL = baseurl;
             this.ConstructUrl();
+            this.ConfigureParameters();
         }
 
         /// <summary>

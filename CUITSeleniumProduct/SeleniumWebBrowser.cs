@@ -52,7 +52,7 @@ namespace CUITSeleniumProduct
             window.Navigate().GoToUrl(url);
         }
 
-        public override void WaitForControlReady()
+        public override void WaitForControlReady(int milliseconds)
         {
             throw new NotImplementedException();
             //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(4));
@@ -86,10 +86,6 @@ namespace CUITSeleniumProduct
             return this;
         }
 
-        public override HtmlControl Body()
-        {
-            throw new NotImplementedException();
-        }
         
         public override void Maximized( bool isOk = true)
         {
