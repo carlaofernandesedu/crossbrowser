@@ -41,6 +41,13 @@ namespace CodedUITestCrossbrowser
             Assert.IsTrue(page.IsAt());
         }
 
+        [TestMethod]
+        public void CodedUITestLogarNoSistema()
+        {
+            HomePage page = _pages.Launch<HomePage>(_driverBrowser);
+            Assert.IsTrue(page.LogarNoSistema("xxxx","5555"));
+        }
+
         
 
         #region Additional test attributes
@@ -52,7 +59,7 @@ namespace CodedUITestCrossbrowser
         public void MyTestInitialize()
         {
 
-            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("ie");
+            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("chrome");
             _pages = FactoryObjects<SeleniumWebFactory>.FactoryPage();
             _pages.SetBaseURl("http://10.200.240.19/portalnet");
             

@@ -12,17 +12,17 @@ namespace CUITSeleniumProduct
     public class SeleniumWebElement : WebElement
     {
 
-        public override void Submit(dynamic objeto)
+        public override void Submit(ref dynamic objeto)
         {
             objeto.Submit();
         }
 
-        public override void Clear(dynamic objeto)
+        public override void Clear(ref dynamic objeto)
         {
             objeto.Clear();
         }
 
-        public override void Click(dynamic objeto)
+        public override void Click(ref dynamic objeto)
         {
             objeto.Click();
         }

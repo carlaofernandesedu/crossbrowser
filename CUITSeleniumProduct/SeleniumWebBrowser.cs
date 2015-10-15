@@ -31,6 +31,7 @@ namespace CUITSeleniumProduct
 
         public SeleniumWebBrowser(string name, string _pathBrowser, string homeurl)
         {
+            Elements = new SeleniumWebElement();
             browserName = name;
             pathbrowser = _pathBrowser;
             if (!String.IsNullOrEmpty(homeurl))

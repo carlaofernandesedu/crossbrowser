@@ -21,6 +21,7 @@ namespace CUITGenericProduct
         
         public GenericWebBrowser(string name,string filename,String homeurl)
         {
+            Elements = new GenericWebElement();
             pathbrowser = filename;
             browserName = name;
             if (!String.IsNullOrEmpty(homeurl))

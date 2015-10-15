@@ -25,6 +25,7 @@ namespace CodedUITestCrossbrowser.Pages
                 _parametros = new List<ParameterProp>();
                 _parametros.Add(new ParameterProp("Usuario", "ctl00_ContentPlaceHolder1_txtUsuario", false, "HtmlEdit"));
                 _parametros.Add(new ParameterProp("Password", "ctl00_ContentPlaceHolder1_txtSenha", false, "HtmlEdit"));
+                _parametros.Add(new ParameterProp("btnLogar", "ctl00_ContentPlaceHolder1_btnEntrar", false, "HtmlButton"));
                 return _parametros;
         }
 
@@ -34,16 +35,27 @@ namespace CodedUITestCrossbrowser.Pages
         }
 
         #region "Controles"
-        public dynamic Usuario;
-        public dynamic Password;
+        public  dynamic Usuario;
+        public  dynamic Password;
+        private dynamic btnLogar; 
         #endregion
+
+        public bool LogarNoSistema(string usuario,string senha)
+        {
+            CurrentBrowser.SendKeys(Usuario, usuario);
+            CurrentBrowser.SendKeys(Password, senha);
+            CurrentBrowser.Elements.Click(ref btnLogar);
+            return true;
+        }
 
         public override bool IsValidPageDisplayed()
         {
             var usuario = _parametros.Find(x => x.PropName == "Usuario");
             var password = _parametros.Find(x => x.PropName == "Password");
+            var btnlogar = _parametros.Find(x => x.PropName == "btnLogar");
             Usuario = this.CurrentBrowser.FindFirstById(usuario.ControlType, usuario.ControlId);
             Password = this.CurrentBrowser.FindFirstById(password.ControlType, password.ControlId);
+            btnLogar = this.CurrentBrowser.FindFirstById(btnlogar.ControlType, btnlogar.ControlId);
             return true;
         }
     }
