@@ -39,6 +39,7 @@ namespace CodedUITestCrossbrowser
         {
             HomePage page = _pages.Launch<HomePage>(_driverBrowser);
             Assert.IsTrue(page.IsAt());
+            _pages.Unload(page);
         }
 
         [TestMethod]
@@ -46,6 +47,7 @@ namespace CodedUITestCrossbrowser
         {
             HomePage page = _pages.Launch<HomePage>(_driverBrowser);
             Assert.IsTrue(page.LogarNoSistema("xxxx","5555"));
+            _pages.Unload(page);
         }
 
         
@@ -61,7 +63,7 @@ namespace CodedUITestCrossbrowser
 
             _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("chrome");
             _pages = FactoryObjects<SeleniumWebFactory>.FactoryPage();
-            _pages.SetBaseURl("http://10.200.240.19/portalnet");
+            _pages.SetBaseURl("http://drhunet.edunet.sp.gov.br/portalnet");
             
         }
 

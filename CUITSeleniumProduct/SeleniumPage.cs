@@ -71,5 +71,14 @@ namespace CUITSeleniumProduct
         {
             _baseURL = baseURL;
         }
+
+
+        public void Unload(BasePage pageroot, bool clearCookies = true, bool finalizeResourceBrowser = true)
+        {
+            if (clearCookies)
+                pageroot.CurrentBrowser.ClearCookies();
+
+            pageroot.CurrentBrowser.Close(finalizeResourceBrowser);
+        }
     }
 }

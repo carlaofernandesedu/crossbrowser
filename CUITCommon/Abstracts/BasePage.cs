@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace CUITCommon.Abstracts
 {
@@ -9,6 +10,8 @@ namespace CUITCommon.Abstracts
     {
         public string BaseURL = "http://localhost/";
         public abstract string Title{get;}
+
+        protected List<ParameterProp> _parametros;
 
         public abstract List<ParameterProp> ConfigureParameters();
 
@@ -45,7 +48,16 @@ namespace CUITCommon.Abstracts
         /// Veryfies derived page is displayed correctly.
         /// </summary>
         /// <returns></returns>
-        public abstract bool IsValidPageDisplayed();
+        public virtual bool IsValidPageDisplayed()
+        {
+            foreach (var parametro in _parametros)
+            {
+                var control = this.CurrentBrowser.FindFirstById(parametro.ControlType, parametro.ControlId);
+                FieldInfo fieldInfo = this.GetType().GetField(parametro.PropName);
+                fieldInfo.SetValue(this, control);
+            }
+            return true;
+        }
         /// <summary>
         /// Navigate to the specyfic URL by using current browser window.
         /// </summary>

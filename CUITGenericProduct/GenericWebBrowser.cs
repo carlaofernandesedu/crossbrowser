@@ -60,6 +60,19 @@ namespace CUITGenericProduct
             return this;
         }
 
+        public override void Close(bool finalizeResource = true)
+        {
+            if (finalizeResource)
+            {
+                window.Dispose();
+            }
+            else
+            {
+                window.Close();
+            }
+        } 
+
+
         public HtmlControl Body()
         {
             return (window.CurrentDocumentWindow.GetChildren()[0] as UITestControl) as HtmlControl;

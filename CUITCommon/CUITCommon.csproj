@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\BasePage.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Abstracts\WebBrowser.cs" />
     <Compile Include="Abstracts\WebElement.cs" />
     <Compile Include="Interfaces\IWebPage.cs" />

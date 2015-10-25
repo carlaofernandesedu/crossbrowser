@@ -12,6 +12,8 @@ namespace CUITCommon.Abstracts
 
         public abstract void WaitForControlReady(int milliseconds);
 
+        public abstract void Close(bool finalizeResource = true);
+        
         public abstract WebBrowser Launch(Uri url);
 
 

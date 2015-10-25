@@ -87,6 +87,17 @@ namespace CUITSeleniumProduct
             return this;
         }
 
+        public override void Close(bool finalizeResource = true)
+        {
+            if (finalizeResource)
+            {
+                window.Quit();
+            }
+            else
+            {
+                window.Close();
+            }
+        }
         
         public override void Maximized( bool isOk = true)
         {

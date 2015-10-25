@@ -17,17 +17,17 @@ namespace CUITGenericProduct
     public class GenericWebElement : WebElement
     {
 
-        public override void Submit(ref dynamic objeto)
+        public override void Submit(dynamic objeto)
         {
             objeto.Submit();
         }
 
-        public override void Clear(ref dynamic objeto)
+        public override void Clear(dynamic objeto)
         {
             objeto.Clear();
         }
 
-        public override void Click(ref dynamic objeto)
+        public override void Click(dynamic objeto)
         {
             objeto.Click();
         }

@@ -13,7 +13,7 @@ namespace CodedUITestCrossbrowser.Pages
     public class HomePage : BasePage 
     {
 
-        private List<ParameterProp> _parametros;
+        
 
         public override string Title
         {
@@ -35,28 +35,28 @@ namespace CodedUITestCrossbrowser.Pages
         }
 
         #region "Controles"
-        public  dynamic Usuario;
-        public  dynamic Password;
-        private dynamic btnLogar; 
+        public dynamic Usuario;
+        public dynamic Password;
+        public dynamic btnLogar; 
         #endregion
 
         public bool LogarNoSistema(string usuario,string senha)
         {
             CurrentBrowser.SendKeys(Usuario, usuario);
             CurrentBrowser.SendKeys(Password, senha);
-            CurrentBrowser.Elements.Click(ref btnLogar);
+            CurrentBrowser.Elements.Click(btnLogar);
             return true;
         }
 
-        public override bool IsValidPageDisplayed()
-        {
-            var usuario = _parametros.Find(x => x.PropName == "Usuario");
-            var password = _parametros.Find(x => x.PropName == "Password");
-            var btnlogar = _parametros.Find(x => x.PropName == "btnLogar");
-            Usuario = this.CurrentBrowser.FindFirstById(usuario.ControlType, usuario.ControlId);
-            Password = this.CurrentBrowser.FindFirstById(password.ControlType, password.ControlId);
-            btnLogar = this.CurrentBrowser.FindFirstById(btnlogar.ControlType, btnlogar.ControlId);
-            return true;
-        }
+        //public override bool IsValidPageDisplayed()
+        //{
+        //    var usuario = _parametros.Find(x => x.PropName == "Usuario");
+        //    var password = _parametros.Find(x => x.PropName == "Password");
+        //    var btnlogar = _parametros.Find(x => x.PropName == "btnLogar");
+        //    Usuario = this.CurrentBrowser.FindFirstById(usuario.ControlType, usuario.ControlId);
+        //    Password = this.CurrentBrowser.FindFirstById(password.ControlType, password.ControlId);
+        //    btnLogar = this.CurrentBrowser.FindFirstById(btnlogar.ControlType, btnlogar.ControlId);
+        //    return true;
+        //}
     }
 }

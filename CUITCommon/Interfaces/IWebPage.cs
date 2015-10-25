@@ -20,5 +20,9 @@ namespace CUITCommon.Interfaces
         T NavigateTo<T>(BasePage pageroot) where T : BasePage, new();
 
         void SetBaseURl(string baseURL); 
+
+        void Unload(BasePage pageroot,
+            bool clearCookies=true,
+            bool finalizeResourceBrowser = true);
     }
 }
