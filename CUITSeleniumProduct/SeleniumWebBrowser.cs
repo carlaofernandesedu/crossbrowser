@@ -12,6 +12,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using System.Diagnostics; 
 
 
 namespace CUITSeleniumProduct
@@ -24,6 +25,8 @@ namespace CUITSeleniumProduct
         private string pathbrowser;
 
         private string browserName;
+
+        private IEnumerable<int> newPids;
 
         public SeleniumWebBrowser() : this("firefox","","")
         {
@@ -64,7 +67,28 @@ namespace CUITSeleniumProduct
 
         public override WebBrowser Launch(Uri url)
         {
+            string nomedriver = "firefoxdriver";
+            IEnumerable<int> pidsBefore = null; 
 
+            try
+            {
+                switch (browserName.ToLower())
+                {
+                    case "chrome":
+                        nomedriver = "chromedriver";
+                        break;
+                    case "firefox":
+                        nomedriver = "firefoxdriver";
+                        break;
+                    case "ie":
+                        nomedriver = "internetexplorerdriver";
+                        break;
+                }
+                pidsBefore = Process.GetProcessesByName(nomedriver).Select(p => p.Id);
+            }
+            catch { }
+
+            
             switch (browserName.ToLower())
             {
                 case "chrome":
@@ -84,6 +108,14 @@ namespace CUITSeleniumProduct
                     break;
             }
             this.window.Url = url.AbsoluteUri;
+
+            try
+            {
+                IEnumerable<int> pidsAfter = Process.GetProcessesByName(nomedriver).Select(p => p.Id);
+                newPids = pidsAfter.Except(pidsBefore);
+            }
+            catch { }
+
             return this;
         }
 
@@ -92,6 +124,16 @@ namespace CUITSeleniumProduct
             if (finalizeResource)
             {
                 window.Quit();
+                try
+                {
+                    foreach (int pid in newPids) 
+                    {
+                        Process.GetProcessById(pid).Kill();
+                    }
+                }
+                catch(Exception ex)
+                {
+                }
             }
             else
             {
