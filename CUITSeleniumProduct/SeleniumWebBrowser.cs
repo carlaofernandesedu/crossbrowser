@@ -10,6 +10,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.PhantomJS;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 using System.Diagnostics; 
@@ -67,11 +68,13 @@ namespace CUITSeleniumProduct
 
         public override WebBrowser Launch(Uri url)
         {
-            string nomedriver = "firefoxdriver";
+            string nomedriver = String.Empty;
             IEnumerable<int> pidsBefore = null; 
 
-            try
+            
+            if (browserName.ToLower() != "phantomjs")
             {
+                
                 switch (browserName.ToLower())
                 {
                     case "chrome":
@@ -86,7 +89,7 @@ namespace CUITSeleniumProduct
                 }
                 pidsBefore = Process.GetProcessesByName(nomedriver).Select(p => p.Id);
             }
-            catch { }
+            
 
             
             switch (browserName.ToLower())
@@ -106,15 +109,19 @@ namespace CUITSeleniumProduct
                     };
                     window = new InternetExplorerDriver(pathbrowser, options);
                     break;
+                case "phantomjs":
+                    var service = PhantomJSDriverService.CreateDefaultService(pathbrowser);
+                    window = new PhantomJSDriver(service);
+                    break;
             }
             this.window.Url = url.AbsoluteUri;
 
-            try
+            if (browserName.ToLower() != "phantomjs")
             {
                 IEnumerable<int> pidsAfter = Process.GetProcessesByName(nomedriver).Select(p => p.Id);
                 newPids = pidsAfter.Except(pidsBefore);
             }
-            catch { }
+            
 
             return this;
         }
@@ -126,10 +133,13 @@ namespace CUITSeleniumProduct
                 window.Quit();
                 try
                 {
-                    foreach (int pid in newPids) 
+                    if (newPids != null)
                     {
-                        Process.GetProcessById(pid).Kill();
-                    }
+                        foreach (int pid in newPids)
+                        {
+                            Process.GetProcessById(pid).Kill();
+                        }
+                    }               
                 }
                 catch(Exception ex)
                 {
