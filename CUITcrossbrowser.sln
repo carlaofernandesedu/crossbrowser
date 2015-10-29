@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITCommon", "CUITCommon\CUITCommon.csproj", "{BFEF3E92-0CFA-4B23-B3C1-E309A2129510}"
 EndProject
@@ -12,6 +12,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITSeleniumProduct", "CUITSeleniumProduct\CUITSeleniumProduct.csproj", "{24B0FCAF-5082-4A4C-BFB3-24A7A19ADF96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITGenericProduct", "CUITGenericProduct\CUITGenericProduct.csproj", "{112D9F22-124A-4BC4-9D52-7C2D9DA715A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A1E2F95-E3C8-458A-AB78-8BFA22A274C2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
