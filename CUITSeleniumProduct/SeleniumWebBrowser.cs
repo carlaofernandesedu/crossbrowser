@@ -18,15 +18,31 @@ using System.Diagnostics;
 
 namespace CUITSeleniumProduct
 {
+    /// <summary>
+    /// Classse que representa o browser. Tipos de browser suportados: Google, IE, Firefox , PhantomJS
+    /// </summary>
     public class SeleniumWebBrowser : WebBrowser
     {
-
+        /// <summary>
+        /// engine do browser objeto. Por essa variavel consegue acessar o metodos do browser
+        /// </summary>
         private IWebDriver window;
 
+        /// <summary>
+        /// Caminho onde deve ser está hospedado o arquivo executavel usado para simular o browser escolhido
+        /// Camino padrao:  
+        /// </summary>
         private string pathbrowser;
 
+        /// <summary>
+        /// nome do browser: ie, google, firefox ou phantomjs
+        /// </summary>
         private string browserName;
 
+        /// <summary>
+        /// Lista do numero de processos do windows associados. 
+        /// Há determinados browser que abrem um processo (command)  para poder funcionar
+        /// </summary>
         private IEnumerable<int> newPids;
 
         public SeleniumWebBrowser() : this("firefox","","")
@@ -45,18 +61,29 @@ namespace CUITSeleniumProduct
             
         }
         
+        /// <summary>
+        /// Retorna o titulo da pagina 
+        /// </summary>
+        /// <returns></returns>
         public override string Title()
         {
 
             return window.Title;
         }
 
-
+        /// <summary>
+        /// Redireciona a pagina 
+        /// </summary>
+        /// <param name="url">url para onde deve ser direcionada a pagina</param>
         public override void NavigateToUrl(Uri url)
         {
             window.Navigate().GoToUrl(url);
         }
 
+        /// <summary>
+        /// Indica que o browser será suspenso até o processo terminar para poder continuar
+        /// </summary>
+        /// <param name="milliseconds">milisegundos</param>
         public override void WaitForControlReady(int milliseconds)
         {
             throw new NotImplementedException();
@@ -66,6 +93,11 @@ namespace CUITSeleniumProduct
             //IWebElement autocomplete = wait.Until(x => x.FindElement(By.ClassName("ac-row-110457")))
         }
 
+        /// <summary>
+        /// Retorna um objeto browser de acordo com o nome do browser(browsername) 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public override WebBrowser Launch(Uri url)
         {
             string nomedriver = String.Empty;
@@ -126,6 +158,10 @@ namespace CUITSeleniumProduct
             return this;
         }
 
+        /// <summary>
+        /// Encerrra o browser e os processos relacionados a pagina ou somente fecha a pagina
+        /// </summary>
+        /// <param name="finalizeResource"></param>
         public override void Close(bool finalizeResource = true)
         {
             if (finalizeResource)
@@ -151,33 +187,63 @@ namespace CUITSeleniumProduct
             }
         }
         
+        /// <summary>
+        /// Maximiza a pagina
+        /// </summary>
+        /// <param name="isOk">isOK</param>
         public override void Maximized( bool isOk = true)
         {
             if (isOk)
                 window.Manage().Window.Maximize();
         }
 
+        /// <summary>
+        /// Limpar cookies do navegador
+        /// </summary>
         public override void ClearCookies()
         {
             window.Manage().Cookies.DeleteAllCookies();
         }
 
+        /// <summary>
+        /// Retornar controle baseado na tag ID
+        /// </summary>
+        /// <param name="typeObject"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public override dynamic FindFirstById(string typeObject, string id)
         {
             return window.FindElement(By.Id(id));
         }
 
+        /// <summary>
+        /// Retornar controle pesquisando pela tag cssClass
+        /// </summary>
+        /// <param name="typeObject"></param>
+        /// <param name="cssclass"></param>
+        /// <returns></returns>
         public override dynamic FindFirstByCssClass(string typeObject, string cssclass)
         {
             return window.FindElement(By.ClassName(cssclass));
         }
 
+        /// <summary>
+        /// Retornar controle pesquisando pela tag Name
+        /// </summary>
+        /// <param name="typeObject"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public override dynamic FindFirstByName(string typeObject, string name)
         {
             return window.FindElement(By.Name(name));
         }
 
 
+        /// <summary>
+        /// Preenche o controle com determinado texto 
+        /// </summary>
+        /// <param name="control">objeto que representa o controle</param>
+        /// <param name="value">texto</param>
         public override void SendKeys(dynamic control, string value)
         {
             control.SendKeys(value);

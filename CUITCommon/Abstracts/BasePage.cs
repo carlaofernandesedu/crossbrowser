@@ -8,30 +8,31 @@ namespace CUITCommon.Abstracts
 
     public abstract class BasePage
     {
+        
+        /// Representa a URL Base da pagina
         public string BaseURL = "http://localhost/";
+        /// Representa o titulo da pagina
         public abstract string Title{get;}
-
+        /// Representa o conjunto de objetos para realizar o depara entre objetos do html e objetos da pagina
         protected List<ParameterProp> _parametros;
-
+        /// Metodo responsavel por carrega os controles aplicando o depara parametrizado no lista Parametros
         public abstract List<ParameterProp> ConfigureParameters();
 
-        /// <summary>
-        /// Gets URL address of the current page.
-        /// </summary>
-        /// <summary>
-        /// Current broser window.
-        /// </summary>
+        /// Objeto que representar o Browser. Por essa variavel podera acessar os metodos comuns de uso do browser
         public WebBrowser CurrentBrowser { get; set; }
 
         /// <summary>
-        /// Default constructor.
+        /// Construtor padrao
         /// </summary>
         public BasePage()
         {
             this.ConstructUrl();
             this.ConfigureParameters();
         }
-
+        /// <summary>
+        /// Construtor informar a url base
+        /// </summary>
+        /// <param name="baseurl">url base</param>
         public BasePage(string baseurl)
         {
             this.BaseURL = baseurl;
@@ -40,12 +41,12 @@ namespace CUITCommon.Abstracts
         }
 
         /// <summary>
-        /// Builds derived page URL based on the BaseURL and specyfic page URL.
+        /// Constroi a URL Derivada da Base
         /// </summary>
         /// <returns></returns>
         public abstract Uri ConstructUrl();
         /// <summary>
-        /// Veryfies derived page is displayed correctly.
+        /// Carrega dinamicamente cada um dos controles da lista da variavel _parametros a partir do depara
         /// </summary>
         /// <returns></returns>
         public virtual bool IsValidPageDisplayed()

@@ -10,8 +10,17 @@ namespace CUITSeleniumProduct
 {
     public class SeleniumPage : IWebPage
     {
+
+        /// Indica a Base URL do site 
         private string _baseURL = String.Empty;
-       
+       /// <summary>
+       /// Carrega a pagina web 
+       /// </summary>
+       /// <typeparam name="T">Informar o tipo da classe no qual será gerado o objeto representando a classe</typeparam>
+       /// <param name="browser">Informar o browser a ser utilizado</param>
+       /// <param name="clearCookies">Informar se deve excluir os cookies</param>
+       /// <param name="maximized">Informar se browser deve abrir maximizado</param>
+       /// <returns></returns>
         public T Launch<T>(
             WebBrowser browser,
             bool clearCookies = true,
@@ -52,6 +61,12 @@ namespace CUITSeleniumProduct
             page.CurrentBrowser = pageroot.CurrentBrowser;
             return page;
         }
+        /// <summary>
+        /// Redireciona a pagina origem para uma pagina destino
+        /// </summary>
+        /// <typeparam name="T">Informe o tipo que representa a pagina destino</typeparam>
+        /// <param name="pageroot">Informe o objeto que representa a pagina origem</param>
+        /// <returns></returns>
         public T NavigateTo<T>(BasePage pageroot) where T : BasePage, new()
         {
             if (pageroot.CurrentBrowser == null)
@@ -66,13 +81,21 @@ namespace CUITSeleniumProduct
             return page;
         }
 
-
+        /// <summary>
+        /// Seta a URLBASE da pagina
+        /// </summary>
+        /// <param name="baseURL"></param>
         public void SetBaseURl(string baseURL)
         {
             _baseURL = baseURL;
         }
 
-
+        /// <summary>
+        /// Descarrega pagina web ativa e se outros recursos se necessario
+        /// </summary>
+        /// <param name="pageroot">Objeto que representa a pagina web</param>
+        /// <param name="clearCookies">excluir os cookies</param>
+        /// <param name="finalizeResourceBrowser">fechar o browser e outros recursos</param>
         public void Unload(BasePage pageroot, bool clearCookies = true, bool finalizeResourceBrowser = true)
         {
             if (clearCookies)

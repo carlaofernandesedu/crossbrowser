@@ -21,13 +21,18 @@ using System.IO;
 namespace CodedUITestCrossbrowser
 {
     /// <summary>
-    /// Summary description for CodedUITest1
+    /// A classe teste ira chamar metodos da classe que representa a Pagina Web (HomePage)
+    /// Basicamente deve testar 
+    /// IsAt - Se o titulo da pagina que o browser carregou é o mesmo informado no metodo Title
+    /// 
     /// </summary>
     [CodedUITest]
     public class CodedUITest1
     {
+        
+        /// Variavel obrigatoria para poder manipular as classes que herdam do BasePage
         private IWebPage _pages;
-
+        /// Variavel obrigatoria para poder representar os browser que será utilizado nos métodos
         private CUITCommon.Abstracts.WebBrowser _driverBrowser;
         
         public CodedUITest1()
@@ -56,12 +61,16 @@ namespace CodedUITestCrossbrowser
 
         // You can use the following additional attributes as you write your tests:
 
-        ////Use TestInitialize to run code before running each test 
+        /// <summary>
+        /// Obrigatoriamente carregar o objeto _driverBrowser (representa o browser) a partir do nome do browser informado
+        /// Obrigatoriamente carregar o objeto reponsavel por manipular classes que herdam do BasePage
+        /// Obrigatoriamente setar a pagina inicial do projeto que está sendo testado
+        /// </summary>
         [TestInitialize()]
         public void MyTestInitialize()
         {
 
-            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("phantomjs");
+            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("chrome");
             _pages = FactoryObjects<SeleniumWebFactory>.FactoryPage();
             _pages.SetBaseURl("http://drhunet.edunet.sp.gov.br/portalnet");
             
