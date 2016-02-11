@@ -6,6 +6,8 @@ namespace CUITCommon.Interfaces
     {
         WebBrowser getObjectBrowser(string browser);
 
+        WebBrowser getObjectBrowser(string browser, string homeurl,string path);
+
         WebBrowser getObjectBrowser(string browser,string homeurl);
         IWebPage getObjectPages();
        

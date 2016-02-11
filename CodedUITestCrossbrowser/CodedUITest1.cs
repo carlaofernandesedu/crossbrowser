@@ -69,8 +69,8 @@ namespace CodedUITestCrossbrowser
         [TestInitialize()]
         public void MyTestInitialize()
         {
-
-            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("chrome");
+             var path = @"c:\browsers2";
+            _driverBrowser = FactoryObjects<SeleniumWebFactory>.FactoryBrowser("chrome",String.Empty,path);
             _pages = FactoryObjects<SeleniumWebFactory>.FactoryPage();
             _pages.SetBaseURl("http://drhunet.edunet.sp.gov.br/portalnet");
             

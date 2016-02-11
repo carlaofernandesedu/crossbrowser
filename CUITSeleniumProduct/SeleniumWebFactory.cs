@@ -15,6 +15,19 @@ namespace CUITSeleniumProduct
     /// </summary>
     public class SeleniumWebFactory : IWebFactory
     {
+
+        /// <summary>
+        /// Metodo que retorna o browser informando o nome e o caminho do executavel
+        /// </summary>
+        /// <param name="browser">nome do browser ie, firefox , google ou phantomjs</param>
+        /// <param name="path">caminho do browser</param>
+        /// <returns>WebBrowser</returns>
+        public WebBrowser getObjectBrowser(string browser,string homeurl, string path)
+        {
+            return new SeleniumWebBrowser(browser, path, homeurl);
+        }
+
+        
         /// <summary>
         /// Metodo que retorna o browser informando o nome
         /// </summary>
@@ -51,7 +64,14 @@ namespace CUITSeleniumProduct
         private static string GetBrowserExePath(string browser)
         {
             var path = @"c:\exebrowsers";
+            
+            if (!Directory.Exists(path))
+                throw new DirectoryNotFoundException("Diretorio dos executaveis dos browsers" + path +  " nao existe" );
+
+            
             return path;
         }
+
+        
     }
 }

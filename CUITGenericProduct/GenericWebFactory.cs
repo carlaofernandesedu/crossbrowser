@@ -10,6 +10,21 @@ namespace CUITGenericProduct
 {
     public class GenericWebFactory : IWebFactory 
     {
+
+        /// <summary>
+        /// Metodo que retorna o browser informando o nome e o caminho do executavel
+        /// </summary>
+        /// <param name="browser">nome do browser ie, firefox , google ou phantomjs</param>
+        /// <param name="path">caminho do browser</param>
+        /// <returns>WebBrowser</returns>
+        public WebBrowser getObjectBrowser(string browser, string homeurl, string path)
+        {
+            if (String.IsNullOrEmpty(homeurl))
+                return getObjectBrowser(browser);
+            else 
+                return getObjectBrowser(browser,homeurl);
+        }
+
         public WebBrowser getObjectBrowser(string browser)
         {
             var path = GetBrowserExePath(browser);
